@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /* Button Base Styles */
+  .btn-base {
+    @apply rounded-xl transition-all duration-200 font-medium;
+    @apply active:scale-95 hover:brightness-110;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply dark:focus:ring-offset-background-dark;
+  }
+
+  /* Number Buttons */
+  .btn-number {
+    @apply btn-base;
+    @apply bg-surface-light dark:bg-surface-dark;
+    @apply text-text-primary-light dark:text-text-primary-dark;
+    @apply text-2xl font-medium;
+    @apply border border-text-secondary-light/20 dark:border-text-secondary-dark/20;
+    @apply h-16 sm:h-14;
+  }
+
+  /* Operator Buttons */
+  .btn-operator {
+    @apply btn-base;
+    @apply bg-primary/10 dark:bg-primary/20;
+    @apply text-primary;
+    @apply text-2xl font-bold;
+    @apply h-16 sm:h-14;
+  }
+
+  /* Function Buttons */
+  .btn-function {
+    @apply btn-base;
+    @apply bg-surface-light dark:bg-surface-highlight;
+    @apply text-text-primary-light dark:text-text-primary-dark;
+    @apply text-sm font-semibold;
+    @apply h-12;
+  }
+
+  /* Utility Buttons (AC, Backspace, ANS) */
+  .btn-utility {
+    @apply btn-base;
+    @apply bg-surface-light dark:bg-surface-dark;
+    @apply text-text-primary-light dark:text-text-primary-dark;
+    @apply text-xl font-semibold;
+    @apply h-16 sm:h-14;
+  }
+
+  .btn-utility[data-action="clear"] {
+    @apply bg-red-500/10 dark:bg-red-500/20;
+    @apply text-red-600 dark:text-red-400;
+  }
+
+  /* Equals Button */
+  .btn-equals {
+    @apply btn-base;
+    @apply bg-primary;
+    @apply text-white;
+    @apply text-2xl font-bold;
+    @apply h-16 sm:h-14;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
