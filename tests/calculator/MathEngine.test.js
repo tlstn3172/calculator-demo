@@ -112,6 +112,55 @@ describe('MathEngine', () => {
         });
     });
 
+    describe('삼각함수 (DEG 모드)', () => {
+        it('should calculate sin(30) correctly in DEG mode', () => {
+            expect(engine.getAngleMode()).toBe('deg');
+            const result = engine.evaluate('sin(30)');
+            expect(result).toBeCloseTo(0.5, 10);
+        });
+
+        it('should calculate cos(60) correctly in DEG mode', () => {
+            const result = engine.evaluate('cos(60)');
+            expect(result).toBeCloseTo(0.5, 10);
+        });
+
+        it('should calculate tan(45) correctly in DEG mode', () => {
+            const result = engine.evaluate('tan(45)');
+            expect(result).toBeCloseTo(1, 10);
+        });
+
+        it('should calculate cos(0) correctly in DEG mode', () => {
+            const result = engine.evaluate('cos(0)');
+            expect(result).toBe(1);
+        });
+    });
+
+    describe('삼각함수 (RAD 모드)', () => {
+        beforeEach(() => {
+            engine.setAngleMode('rad');
+        });
+
+        it('should calculate sin(pi/6) correctly in RAD mode', () => {
+            const result = engine.evaluate('sin(pi/6)');
+            expect(result).toBeCloseTo(0.5, 10);
+        });
+
+        it('should calculate cos(pi/3) correctly in RAD mode', () => {
+            const result = engine.evaluate('cos(pi/3)');
+            expect(result).toBeCloseTo(0.5, 10);
+        });
+
+        it('should calculate tan(pi/4) correctly in RAD mode', () => {
+            const result = engine.evaluate('tan(pi/4)');
+            expect(result).toBeCloseTo(1, 10);
+        });
+
+        it('should calculate cos(0) correctly in RAD mode', () => {
+            const result = engine.evaluate('cos(0)');
+            expect(result).toBe(1);
+        });
+    });
+
     describe('결과 포맷팅', () => {
         it('should format integer results', () => {
             expect(engine.evaluate('2 + 3')).toBe(5);

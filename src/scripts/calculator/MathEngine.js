@@ -42,14 +42,50 @@ class MathEngine {
                 return 'Error: Empty expression';
             }
 
+            // 각도 모드에 따라 수식 조정
+            const adjustedExpression = this.adjustForAngleMode(expression);
+
             // 수식 평가
-            const result = this.math.evaluate(expression);
+            const result = this.math.evaluate(adjustedExpression);
 
             // 결과 포맷팅
             return this.formatResult(result);
         } catch (error) {
             return this.handleError(error);
         }
+    }
+
+    /**
+     * 각도 모드에 따라 수식을 조정합니다.
+     * DEG 모드일 경우 삼각함수의 인자를 라디안으로 변환합니다.
+     * 
+     * @param {string} expression - 원본 수식
+     * @returns {string} 조정된 수식
+     */
+    adjustForAngleMode(expression) {
+        // RAD 모드이거나 삼각함수가 없으면 그대로 반환
+        if (this.angleMode === 'rad') {
+            return expression;
+        }
+
+        // DEG 모드: 삼각함수 인자를 라디안으로 변환
+        // sin(x) → sin(x * pi / 180)
+        // cos(x) → cos(x * pi / 180)
+        // tan(x) → tan(x * pi / 180)
+        let result = expression;
+
+        // 삼각함수 패턴 매칭 및 변환
+        const trigFunctions = ['sin', 'cos', 'tan'];
+
+        trigFunctions.forEach(func => {
+            // func(숫자) 패턴을 찾아서 func(숫자 * pi / 180)으로 변환
+            const regex = new RegExp(`${func}\\(([^)]+)\\)`, 'g');
+            result = result.replace(regex, (match, arg) => {
+                return `${func}((${arg}) * pi / 180)`;
+            });
+        });
+
+        return result;
     }
 
     /**
