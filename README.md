@@ -418,12 +418,6 @@ npm run format
 - **GitHub Repository**: [https://github.com/tlstn3172/calculator-demo](https://github.com/tlstn3172/calculator-demo)
 - **Issues**: [https://github.com/tlstn3172/calculator-demo/issues](https://github.com/tlstn3172/calculator-demo/issues)
 
-## 👨‍💻 개발자
-
-**신승우 (Seungwoo Shin)**
-- GitHub: [@tlstn3172](https://github.com/tlstn3172)
-- Email: tlstn3172@gmail.com
-
 ## 📄 라이선스
 
 이 프로젝트는 MIT 라이선스 하에 있습니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
@@ -434,6 +428,6 @@ npm run format
 
 **⭐ 이 프로젝트가 도움이 되었다면 Star를 눌러주세요! ⭐**
 
-Made with ❤️ by Seungwoo Shin
+Made with ❤️ for Portfolio
 
 </div>
